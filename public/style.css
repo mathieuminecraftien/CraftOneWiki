@@ -215,7 +215,21 @@ button { font: inherit; cursor: pointer; }
   width: 50%;
   height: 100%;
   overflow: hidden;
-  border-left: 1px solid rgba(59, 103, 91, 0.5);
+  /* Effet de fondu fluide sur la gauche */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
+  mask-image: linear-gradient(to right, transparent 0%, black 15%);
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #1a4a3e 0%, transparent 20%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .hero-image img {
@@ -894,7 +908,19 @@ dialog { width: min(900px, calc(100% - 32px)); max-height: calc(100vh - 32px); o
   .search-wrap { margin: 0 auto; }
   .quick-links { text-align: center; }
   
-  .hero-image { position: relative; width: 100%; height: 350px; border-left: 0; border-top: 1px solid rgba(59, 103, 91, 0.5); }
+  .hero-image { 
+    position: relative; 
+    width: 100%; 
+    height: 350px; 
+    border-left: 0; 
+    border-top: 0;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
+  }
+  
+  .hero-image::before {
+    background: linear-gradient(to bottom, #1e5445 0%, transparent 20%);
+  }
   
   .category-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr; gap: 40px; }
