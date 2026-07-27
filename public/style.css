@@ -94,6 +94,7 @@ button { font: inherit; cursor: pointer; }
   display: flex;
   gap: 12px;
   align-items: center;
+  margin-left: auto;
 }
 
 .discord {
@@ -101,13 +102,15 @@ button { font: inherit; cursor: pointer; }
   background: #5865f2;
   color: #fff;
   border-radius: 8px;
-  padding: 11px 16px;
+  padding: 11px 20px;
   font-weight: 700;
   font-size: 13px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  transition: filter 0.2s;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .discord.secondary {
@@ -117,7 +120,7 @@ button { font: inherit; cursor: pointer; }
 
 .discord:hover {
   filter: brightness(1.1);
-}  text-decoration: none;
+  transform: translateY(-1px);
 }
 
 .discord span { font-size: 16px; margin-right: 4px; }
