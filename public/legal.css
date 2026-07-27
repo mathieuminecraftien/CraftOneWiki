@@ -16,6 +16,8 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .legal-container {
@@ -76,13 +78,7 @@ li {
   color: var(--muted);
 }
 
-footer {
-  margin-top: 60px;
-  padding-top: 30px;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--muted);
-}
+/* Le footer est maintenant géré par style.css */
 
 @media (max-width: 600px) {
   h1 { font-size: 28px; }

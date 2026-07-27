@@ -22,6 +22,9 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: Outfit, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ─── TOPBAR ─── */
@@ -402,6 +405,8 @@ footer {
   border-top: 1px solid var(--line);
   background: #0f2a1e;
   color: #a0b8a8;
+  margin-top: auto;
+  width: 100%;
 }
 
 .footer-inner {
