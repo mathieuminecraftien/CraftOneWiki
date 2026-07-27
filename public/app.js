@@ -13,7 +13,30 @@ function render(query = '') {
   $('#empty').hidden = Boolean(list.length);
   $('#articleCount').textContent = `${allArticles.length} article${allArticles.length > 1 ? 's' : ''}`;
 }
-async function load() { [allArticles, allCategories, me] = await Promise.all([fetch('/api/articles').then(r => r.json()), fetch('/api/categories').then(r => r.json()), fetch('/api/me').then(r => r.json())]); render(); }
+async function load() {
+  [allArticles, allCategories, me] = await Promise.all([
+    fetch('/api/articles').then(r => r.json()),
+    fetch('/api/categories').then(r => r.json()),
+    fetch('/api/me').then(r => r.json())
+  ]);
+  
+  if (me?.user) {
+    const loginBtn = $('#loginButton');
+    if (loginBtn) {
+      loginBtn.innerHTML = `<img src="${me.user.avatarUrl}" style="width:20px;height:20px;border-radius:50%"> ${esc(me.user.name)}`;
+      loginBtn.onclick = async () => {
+        if (confirm('Voulez-vous vous déconnecter ?')) {
+          await fetch('/api/logout', { method: 'POST' });
+          location.reload();
+        }
+      };
+    }
+  } else {
+    $('#loginButton').onclick = () => location.href = '/auth/discord';
+  }
+  
+  render();
+}
 function showLogin() { $('#modalTitle').textContent = 'Connexion staff'; $('#modalContent').replaceChildren($('#loginTemplate').content.cloneNode(true)); }
 function setPanel(panel) { document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.panel === panel)); document.querySelectorAll('.panel').forEach(s => s.classList.toggle('active', s.id === panel)); }
 function fillCategorySelect(selected = '') { $('#categorySelect').innerHTML = allCategories.map(c => `<option ${c.name === selected ? 'selected' : ''}>${esc(c.name)}</option>`).join(''); }
