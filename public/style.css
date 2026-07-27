@@ -891,6 +891,38 @@ dialog { width: min(900px, calc(100% - 32px)); max-height: calc(100vh - 32px); o
 .discord.small { padding: 8px 12px; font-size: 12px; }
 .discord.full { width: 100%; justify-content: center; display: inline-flex; align-items: center; }
 
+/* ─── KARMAHQ BADGE ─── */
+.karma-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--soft-green);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 13px;
+  margin-top: 20px;
+  transition: all 0.2s ease;
+}
+
+.karma-badge:hover {
+  background: var(--soft-green-mid);
+  transform: translateY(-2px);
+  border-color: #cbdad1;
+}
+
+.karma-badge img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.karma-badge strong {
+  color: #1a6354;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1100px) {
   .hero-copy { margin-left: 28px; width: 50%; }
