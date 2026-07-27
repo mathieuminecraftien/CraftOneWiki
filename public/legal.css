@@ -1,0 +1,91 @@
+/* legal.css - Styles pour les pages légales indépendantes */
+:root {
+  --pine: #1a4d3e;
+  --lime: #c9ee43;
+  --ink: #0c211c;
+  --muted: #65736c;
+  --line: #e0e6e2;
+  --soft-green: #f4f7f5;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.legal-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 60px 20px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--pine);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 40px;
+  transition: transform 0.2s;
+}
+
+.back-link:hover {
+  transform: translateX(-5px);
+}
+
+.eyebrow {
+  font: 600 12px 'DM Mono';
+  letter-spacing: 2px;
+  color: var(--pine);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0 0 40px;
+  color: var(--ink);
+}
+
+h3 {
+  font-size: 20px;
+  margin: 30px 0 15px;
+  color: var(--pine);
+}
+
+p {
+  margin-bottom: 20px;
+  color: var(--muted);
+}
+
+ul {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 28px; }
+  .legal-container { padding: 40px 20px; }
+}
