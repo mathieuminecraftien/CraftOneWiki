@@ -872,35 +872,48 @@ dialog { width: min(900px, calc(100% - 32px)); max-height: calc(100vh - 32px); o
 .discord.full { width: 100%; justify-content: center; display: inline-flex; align-items: center; }
 
 /* ─── RESPONSIVE ─── */
-@media (max-width: 760px) {
-  .topbar { padding: 0 18px; }
-  .topbar nav { display: none; }
-  .hero { min-height: 580px; }
-  .hero-copy { width: 100%; margin-left: 0; padding: 55px 25px; z-index: 3; }
-  .image-missing { opacity: .7; width: 100%; height: 580px; }
-  .category-grid, .article-grid { grid-template-columns: 1fr 1fr; }
-  footer { padding: 25px 18px; gap: 15px; flex-wrap: wrap; }
-  .footer-inner { grid-template-columns: 1fr; gap: 28px; padding: 36px 18px 24px; }
-  .footer-bottom { padding: 14px 18px; flex-direction: column; gap: 8px; text-align: center; }
-  .section-title h2 { font-size: 28px; }
-  .argus-panel { right: 12px; left: 12px; bottom: 84px; width: auto; max-height: calc(100vh - 80px); }
-  .argus-messages { max-height: 340px; }
-  .editor-top { grid-template-columns: 1fr; }
-  .editor-workspace { grid-template-columns: 58px 1fr; }
-  .editor-canvas { padding: 10px; }
-  .editor-canvas .ql-editor { padding: 22px; }
-  .editor-sidebar span { display: none; }
-  .inline-form { grid-template-columns: 1fr; }
-  .admin-row { align-items: flex-start; }
-  .admin-row span { flex-direction: column; }
-  dialog { width: min(980px, calc(100% - 32px)) !important; max-height: calc(100vh - 32px); overflow: auto; }
+@media (max-width: 1100px) {
+  .hero-copy { margin-left: 28px; width: 50%; }
+  nav { margin-left: 40px; gap: 20px; }
 }
 
-@media (max-width: 440px) {
-  .category-grid, .article-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 43px; }
-  .topbar .discord { padding: 9px 10px; font-size: 11px; }
-  .brand small { display: none; }
+@media (max-width: 900px) {
+  .topbar nav { display: none; }
+  .article-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .hero { flex-direction: column; min-height: auto; }
+  .hero-copy { width: 100%; margin-left: 0; padding: 60px 28px; text-align: center; }
+  .hero-copy .lead { margin: 22px auto; }
+  .search-wrap { margin: 0 auto; }
+  .quick-links { text-align: center; }
+  
+  .hero-image { position: relative; width: 100%; height: 350px; border-left: 0; border-top: 1px solid #3b675b; }
+  
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  
+  .section-title { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+@media (max-width: 580px) {
+  .topbar { height: auto; padding: 15px 20px; flex-wrap: wrap; gap: 15px; }
+  .auth-buttons { width: 100%; justify-content: center; }
+  .brand { width: 100%; justify-content: center; }
+  
+  .category-grid { grid-template-columns: 1fr; }
+  .article-grid { grid-template-columns: 1fr; }
+  
+  .hero h1 { font-size: 38px; }
+  .hero-image { height: 250px; }
+  
+  .argus-panel { right: 10px; left: 10px; bottom: 80px; width: auto; }
+}
+
+@media (max-width: 400px) {
+  .auth-buttons { flex-direction: column; width: 100%; }
+  .auth-buttons button { width: 100%; }
 }
 
 /* ─── SCROLLBAR STYLE MINECRAFT ─── */
