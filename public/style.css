@@ -204,25 +204,22 @@ button { font: inherit; cursor: pointer; }
   padding: 0 6px;
 }
 
-/* Image manquante placeholder côté hero */
-.image-missing {
+/* Image du hero */
+.hero-image {
   position: absolute;
   right: 0;
-  width: 49%;
-  height: 478px;
-  background: #1d4b3f;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
   border-left: 1px solid #3b675b;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #d8e3dc;
-  gap: 8px;
 }
 
-.image-missing span { font-size: 50px; color: var(--lime); }
-.image-missing strong { font-size: 18px; }
-.image-missing small { color: #a9beb2; }
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 /* ─── SECTIONS COMMUNES ─── */
 section:not(.hero) {
