@@ -1,1 +1,179 @@
-.back{color:var(--pine);font-size:14px;font-weight:600;text-decoration:none}.article-page{max-width:790px;margin:70px auto 100px;padding:0 28px}.article-page h1{font-size:clamp(38px,6vw,62px);line-height:1.04;letter-spacing:-2px;margin:18px 0}.article-lead{color:#52635b;font-size:20px;line-height:1.55;margin:0;max-width:720px}.article-meta{font:12px 'DM Mono';color:var(--muted);margin:24px 0 40px;padding-bottom:22px;border-bottom:1px solid var(--line)}.article-body{font-size:17px;line-height:1.75;color:#263830}.article-body h1,.article-body h2,.article-body h3{margin:1.6em 0 .45em;line-height:1.15;letter-spacing:-.5px}.article-body h1{font-size:32px}.article-body h2{font-size:26px}.article-body h3{font-size:21px}.article-body p{margin:0 0 1em}.article-body img{max-width:100%;height:auto;border-radius:7px;margin:12px 0}.article-body a{color:#167250;text-decoration:underline}.article-body blockquote{border-left:4px solid var(--lime);padding:4px 0 4px 20px;margin:22px 0;color:#51675a}.article-body pre{white-space:pre-wrap;background:#173f35;color:#eff8ed;padding:16px;border-radius:6px}.loading,.not-found{max-width:790px;margin:100px auto;padding:0 28px}.not-found h1{font-size:38px}.not-found a{color:var(--pine);font-weight:700}
+/* =============================================
+   CraftOneWiki — article.css
+   Design : Lecture immersive & moderne
+   ============================================= */
+
+.back {
+  color: var(--pine);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+
+.back:hover {
+  transform: translateX(-4px);
+}
+
+.article-page {
+  max-width: 840px;
+  margin: 60px auto 120px;
+  padding: 0 28px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.article-page h1 {
+  font-size: clamp(36px, 7vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -2.5px;
+  margin: 24px 0 32px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.article-lead {
+  color: #4a5a52;
+  font-size: 22px;
+  line-height: 1.5;
+  margin: 0 0 32px;
+  font-weight: 500;
+  border-left: 3px solid var(--lime);
+  padding-left: 24px;
+}
+
+.article-meta {
+  font: 13px 'DM Mono';
+  color: var(--muted);
+  margin-bottom: 48px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.article-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.article-meta i {
+  color: var(--pine);
+}
+
+.article-body {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #2c3e35;
+}
+
+.article-body h2 {
+  font-size: 32px;
+  margin: 2em 0 0.8em;
+  letter-spacing: -1px;
+  color: var(--pine);
+  border-bottom: 2px solid var(--soft-green-mid);
+  padding-bottom: 8px;
+}
+
+.article-body h3 {
+  font-size: 24px;
+  margin: 1.5em 0 0.6em;
+  letter-spacing: -0.5px;
+  color: var(--pine);
+}
+
+.article-body p {
+  margin-bottom: 1.5em;
+}
+
+.article-body img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 32px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.article-body blockquote {
+  background: var(--soft-green);
+  border-left: 5px solid var(--pine);
+  padding: 24px 32px;
+  margin: 40px 0;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--pine);
+}
+
+.article-body pre {
+  background: #11221e;
+  color: #e0eee0;
+  padding: 24px;
+  border-radius: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 15px;
+  overflow-x: auto;
+  margin: 32px 0;
+  border: 1px solid #1a3a32;
+}
+
+.article-body ul, .article-body ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+.article-body li {
+  margin-bottom: 0.5em;
+}
+
+.loading, .not-found {
+  max-width: 840px;
+  margin: 120px auto;
+  padding: 0 28px;
+  text-align: center;
+}
+
+.loading {
+  font: 500 18px 'DM Mono';
+  color: var(--pine);
+}
+
+.not-found h1 {
+  font-size: 42px;
+  margin-bottom: 24px;
+}
+
+.not-found a {
+  color: var(--pine);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--lime);
+}
+
+@media (max-width: 768px) {
+  .article-page {
+    margin-top: 40px;
+  }
+  .article-page h1 {
+    font-size: 38px;
+    letter-spacing: -1.5px;
+  }
+  .article-lead {
+    font-size: 19px;
+  }
+  .article-body {
+    font-size: 17px;
+  }
+}

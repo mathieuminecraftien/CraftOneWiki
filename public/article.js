@@ -7,7 +7,17 @@ fetch(`/api/articles/slug/${encodeURIComponent(slug)}`)
   .then(async response => { if (!response.ok) throw Error(); return response.json(); })
   .then(article => {
     document.title = `${article.title} — CraftOneWiki`;
-    root.innerHTML = `<article class="article-page"><a href="/?category=${encodeURIComponent(article.category)}" class="tag ${esc(article.category)}">${esc(article.category)}</a><h1>${esc(article.title)}</h1><p class="article-lead">${esc(article.excerpt)}</p><div class="article-meta">Par ${esc(article.author)} · Mis à jour le ${formatDate(article.updatedAt || article.date)}</div><div class="article-body">${article.body}</div></article>`;
+    root.innerHTML = `
+      <article class="article-page">
+        <h1>${esc(article.title)}</h1>
+        <p class="article-lead">${esc(article.excerpt)}</p>
+        <div class="article-meta">
+          <span><i class="fa-solid fa-user"></i> ${esc(article.author)}</span>
+          <span><i class="fa-solid fa-calendar"></i> ${formatDate(article.updatedAt || article.date)}</span>
+          <span><i class="fa-solid fa-folder"></i> ${esc(article.category)}</span>
+        </div>
+        <div class="article-body">${article.body}</div>
+      </article>`;
   })
   .catch(() => {
     document.title = 'Article introuvable — CraftOneWiki';
