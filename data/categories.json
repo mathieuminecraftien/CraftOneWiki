@@ -1,0 +1,38 @@
+[
+  {
+    "id": "cat-news",
+    "name": "Actualités",
+    "description": "Les nouvelles de Minecraft",
+    "color": "blue"
+  },
+  {
+    "id": "cat-biomes",
+    "name": "Biomes",
+    "description": "Découvrir les mondes",
+    "color": "forest"
+  },
+  {
+    "id": "cat-mobs",
+    "name": "Mobs",
+    "description": "Créatures et comportements",
+    "color": "red"
+  },
+  {
+    "id": "cat-mods",
+    "name": "Mods",
+    "description": "Enrichir son aventure",
+    "color": "purple"
+  },
+  {
+    "id": "cat-modpacks",
+    "name": "Modpacks",
+    "description": "Des expériences complètes",
+    "color": "gold"
+  },
+  {
+    "id": "48a74a12-c9b2-49fb-a69d-f6ac691a37eb",
+    "name": "python generic",
+    "description": "Mail principal",
+    "color": "gold"
+  }
+]

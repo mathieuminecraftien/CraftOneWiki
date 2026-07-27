@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1094392180900110457",
+    "name": "Draft_fr",
+    "avatar": "https://cdn.discordapp.com/avatars/1094392180900110457/d9297287916a1e9f47223f387f975efb.png?size=128",
+    "updatedAt": "2026-07-27T00:01:53.682Z",
+    "manageUsers": true
+  },
+  {
+    "id": "1530974699033726991",
+    "name": "MathisMinecraftien",
+    "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
+    "addedAt": "2026-07-26T21:32:16.261Z",
+    "manageUsers": false,
+    "updatedAt": "2026-07-27T08:55:55.837Z"
+  },
+  {
+    "id": "1521079154135666699",
+    "name": "En attente de connexion",
+    "avatar": "https://cdn.discordapp.com/embed/avatars/4.png",
+    "addedAt": "2026-07-26T21:34:28.768Z"
+  }
+]
