@@ -34,6 +34,9 @@ body {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 50;
+  background: var(--paper);
 }
 
 .brand {
@@ -900,8 +903,9 @@ dialog { width: min(900px, calc(100% - 32px)); max-height: calc(100vh - 32px); o
 }
 
 @media (max-width: 580px) {
-  .topbar { height: auto; padding: 15px 20px; flex-wrap: wrap; gap: 15px; }
-  .auth-buttons { width: 100%; justify-content: center; }
+  .topbar { height: auto; padding: 20px; flex-wrap: wrap; gap: 20px; }
+  .auth-buttons { width: 100%; justify-content: center; gap: 10px; }
+  .auth-buttons button { flex: 1; min-height: 44px; padding: 12px 15px; }
   .brand { width: 100%; justify-content: center; }
   
   .category-grid { grid-template-columns: 1fr; }
