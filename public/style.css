@@ -162,6 +162,7 @@ button { font: inherit; cursor: pointer; }
 }
 
 .search-wrap span { font-size: 28px; line-height: 1; transform: rotate(-20deg); }
+.search-wrap .fa-magnifying-glass { font-size: 16px; color: #6c7c74; flex-shrink: 0; }
 .search-wrap input { font: 14px Outfit; border: 0; outline: 0; width: 100%; padding: 0 11px; }
 .search-wrap kbd {
   font: 11px 'DM Mono';
