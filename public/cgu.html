@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conditions d'utilisation — CraftOneWiki</title>
+    <link rel="icon" type="image/png" href="Logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="legal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
+    <header class="topbar">
+        <a class="brand" href="index.html"><img src="Logo.png" alt="CraftOneWiki" class="brand-logo" /><span>CraftOneWiki</span><small>WIKI</small></a>
+        <nav><a href="index.html#explorer">Explorer</a><a href="index.html#categories">Catégories</a><a href="index.html#proposer">Contribuer</a></nav>
+        <div class="auth-buttons">
+            <button id="loginButton" class="discord secondary" onclick="location.href='/auth/discord'"><i class="fa-brands fa-discord"></i> Se connecter</button>
+            <button id="staffButton" class="discord" onclick="location.href='index.html#staff'"><i class="fa-brands fa-discord"></i> Espace staff</button>
+        </div>
+    </header>
+
     <div class="legal-container">
-        <a href="/" class="back-link">← Retour à l'accueil</a>
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
         <p class="eyebrow">LÉGAL</p>
         <h1>Conditions d'utilisation</h1>
         
@@ -27,9 +39,54 @@
             <p>CraftOneWiki ne peut être tenu responsable des erreurs dans le contenu ou des dommages résultant de l'utilisation des informations présentes sur ce site.</p>
         </div>
 
-        <footer>
-            © 2026 CraftOneWiki — Le wiki communautaire francophone de Minecraft.
-        </footer>
-    </div>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <a class="brand" href="index.html"><img src="Logo.png" alt="CraftOneWiki" class="brand-logo" /><span>CraftOneWiki</span></a>
+                <p class="footer-desc">Le wiki communautaire francophone de Minecraft. Non affilié à Mojang ou Microsoft.</p>
+                <div class="footer-badges">
+                    <a href="https://www.karmahq.eu/" target="_blank" class="badge-item karma">
+                        <img src="https://www.google.com/s2/favicons?sz=32&domain=karmahq.eu" alt="KarmaHQ" />
+                        <span>Hébergé par <strong>KarmaHQ</strong></span>
+                    </a>
+                    <a href="javascript:void(0)" class="badge-item wiki-fr">
+                        <img src="Fr.png" alt="Wikis Francophones" />
+                        <span>Membre des <strong>Wikis Francophones</strong></span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <p class="footer-heading">Navigation</p>
+                <ul>
+                    <li><a href="index.html#categories">Catégories</a></li>
+                    <li><a href="index.html#explorer">Articles récents</a></li>
+                    <li><a href="index.html#proposer">Contribuer</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <p class="footer-heading">Légal</p>
+                <ul>
+                    <li><a href="cgu.html">Conditions d'utilisation</a></li>
+                    <li><a href="cookies.html">Politique des cookies</a></li>
+                    <li><a href="mentions.html">Mentions légales</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 CraftOneWiki — Tous droits réservés</span>
+            <a href="index.html"><i class="fa-solid fa-arrow-up"></i> Retour en haut</a>
+        </div>
+    </footer>
+
+    <dialog id="staffModal"><div class="modal-head"><div><p class="eyebrow">ESPACE ÉQUIPE</p><h2 id="modalTitle">Connexion staff</h2></div><button class="close" aria-label="Fermer">×</button></div><div id="modalContent"></div></dialog>
+    <template id="loginTemplate"><p class="modal-copy">Connectez votre compte Discord pour accéder au tableau de bord. Seuls les comptes inscrits dans la liste des administrateurs peuvent gérer le wiki.</p><a href="/auth/discord" class="discord full">◉ Continuer avec Discord</a></template>
+    <template id="deniedTemplate"><p class="modal-copy">Votre compte Discord est connecté, mais son identifiant ne figure pas dans la liste des administrateurs autorisés. Contactez un administrateur du wiki.</p><form action="/api/logout" method="post"><button class="logout">Se déconnecter</button></form></template>
+    <template id="dashboardTemplate"><div class="dashboard-user"><img id="dashboardAvatar" class="avatar-image" alt="Avatar" /><div><strong id="welcome"></strong><small>Administrateur</small></div><button id="logout" class="logout">Se déconnecter</button></div><div class="tabs"><button class="tab active" data-panel="articles">Articles</button><button class="tab" data-panel="categories">Catégories</button><button class="tab" data-panel="admins">Administrateurs</button><button class="tab" data-panel="write">Nouvel article</button></div><section class="panel active" id="articles"><div class="panel-title"><h3>Gérer les articles</h3><button class="small-action" data-open="write">+ Nouvel article</button></div><div id="adminArticles" class="admin-list"></div></section><section class="panel" id="categories"><div class="panel-title"><h3>Gérer les catégories</h3></div><form id="categoryForm" class="inline-form"><input name="name" required maxlength="48" placeholder="Nom de la catégorie" /><input name="description" required maxlength="120" placeholder="Courte description" /><select name="color"><option value="forest">Vert</option><option value="blue">Bleu</option><option value="red">Rouge</option><option value="purple">Violet</option><option value="gold">Or</option></select><button>Ajouter</button></form><div id="adminCategories" class="admin-list"></div></section><section class="panel" id="admins"><div class="panel-title"><h3>Gérer les administrateurs</h3></div><form id="adminForm" class="inline-form"><input name="id" required maxlength="20" placeholder="ID Discord de l'administrateur" /><button type="submit">Ajouter</button></form><div id="adminList" class="admin-list"></div></section><section class="panel" id="write"><div class="panel-title"><h3 id="editorHeading">Nouvel article</h3><span class="save-state">Les modifications sont enregistrées à la publication</span></div><form id="articleForm" class="page-editor"><input type="hidden" name="id" /><div class="editor-top"><label>Titre<input name="title" maxlength="100" required placeholder="Titre de l'article" /></label><label>Catégorie<select name="category" id="categorySelect" required></select></label><label>Résumé<input name="excerpt" maxlength="160" required placeholder="Une courte phrase d'introduction" /></label></div><div class="editor-workspace"><aside class="editor-sidebar" aria-label="Outils d'édition"><button type="button" data-insert="text" title="Texte"><b>T</b><span>Texte</span></button><button type="button" data-insert="heading" title="Titre"><b>H</b><span>Titre</span></button><button type="button" data-insert="image" title="Image"><b>▧</b><span>Image</span></button><button type="button" data-insert="quote" title="Citation"><b>❝</b><span>Citation</span></button><button type="button" data-insert="divider" title="Séparateur"><b>—</b><span>Trait</span></button></aside><div class="editor-canvas"><div class="canvas-label">PAGE DE L'ARTICLE</div><div id="richEditor"></div></div></div><p class="editor-help">Images : JPEG, PNG, GIF ou WebP, 5 Mo maximum.</p><div class="editor-actions"><button class="publish" type="submit">Publier les modifications →</button><button class="cancel-edit" type="button" id="cancelEdit" hidden>Annuler</button></div></form></section></template>
+    
+    <script src="/vendor/quill/quill.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.querySelectorAll('dialog .close').forEach(btn => btn.addEventListener('click', () => btn.closest('dialog').close()));
+    </script>
 </body>
 </html>

@@ -7,11 +7,14 @@ const colors = { Biomes: 'forest', Mobs: 'red', Mods: 'purple', Modpacks: 'gold'
 function date(value) { return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(value)); }
 const esc = value => String(value).replace(/[&<>'"]/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' })[ch]);
 function render(query = '') {
+  if (!grid) return;
   const q = query.trim().toLowerCase();
   const list = allArticles.filter(a => !q || [a.title, a.category, a.excerpt, a.body].join(' ').toLowerCase().includes(q));
   grid.innerHTML = list.map(a => `<article class="article-card"><div class="card-top"><span class="tag ${colors[a.category] || 'blue'}">${esc(a.category)}</span><span>${date(a.date)}</span></div><h3>${esc(a.title)}</h3><p>${esc(a.excerpt)}</p><div class="card-foot"><span>par ${esc(a.author)}</span><button class="read" data-id="${a.id}">Lire <b>→</b></button></div></article>`).join('');
-  $('#empty').hidden = Boolean(list.length);
-  $('#articleCount').textContent = `${allArticles.length} article${allArticles.length > 1 ? 's' : ''}`;
+  const empty = $('#empty');
+  if (empty) empty.hidden = Boolean(list.length);
+  const count = $('#articleCount');
+  if (count) count.textContent = `${allArticles.length} article${allArticles.length > 1 ? 's' : ''}`;
 }
 async function load() {
   [allArticles, allCategories, me] = await Promise.all([
@@ -134,8 +137,32 @@ if (argusInput) {
     }
   });
 }
-$('#search').addEventListener('input', e => render(e.target.value));
-document.querySelectorAll('[data-search]').forEach(b => b.onclick = () => { $('#search').value = b.dataset.search; render(b.dataset.search); document.querySelector('#explorer').scrollIntoView({ behavior: 'smooth' }); });
-document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); $('#search').focus(); } });
-grid.onclick = e => { const b = e.target.closest('.read'); if (!b) return; const a = allArticles.find(x => x.id === b.dataset.id); location.href = `/${encodeURIComponent(a.slug)}`; };
+const searchInput = $('#search');
+if (searchInput) {
+  searchInput.addEventListener('input', e => render(e.target.value));
+}
+document.querySelectorAll('[data-search]').forEach(b => b.onclick = () => { 
+  if (searchInput) {
+    searchInput.value = b.dataset.search; 
+    render(b.dataset.search); 
+  }
+  const explorer = $('#explorer');
+  if (explorer) explorer.scrollIntoView({ behavior: 'smooth' }); 
+});
+document.addEventListener('keydown', e => { 
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { 
+    if (searchInput) {
+      e.preventDefault(); 
+      searchInput.focus(); 
+    }
+  } 
+});
+if (grid) {
+  grid.onclick = e => { 
+    const b = e.target.closest('.read'); 
+    if (!b) return; 
+    const a = allArticles.find(x => x.id === b.dataset.id); 
+    location.href = `/${encodeURIComponent(a.slug)}`; 
+  };
+}
 load();
